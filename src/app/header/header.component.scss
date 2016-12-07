@@ -1,0 +1,19 @@
+.md-toolbar {
+	display: flex;
+	flex-direction: row;
+	justify-content: flex-start;
+	align-items: center;
+	height: 100px;
+}
+
+.app-title {
+	font-weight: normal;
+	padding: 5px;
+}
+
+.app-logo-ref {
+	display: flex;
+	align-items: center;
+	text-decoration: none;	
+	color: currentColor;
+}

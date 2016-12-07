@@ -1,0 +1,25 @@
+<div class="contest-search">
+	<md-input placeholder="Поиск" class="contest-search-input" [(ngModel)]="name"></md-input>
+</div>
+
+<div *ngIf="isDataAvailable" class="contests">
+	<div *ngIf="contests.length==0" class="contests-error">
+		<p>Sorry! But database is not available now!</p>
+	</div>
+	<md-card *ngFor="let contest of contests | contestsNameFilter:name " class="contest-card">
+		<a [routerLink]="['/contest', contest.id, 1]" class=contest-card__href>
+			<div class="contest-card__picture" [ngStyle]="{'background-image': 'url('+ backgroungUrl + contest.id+'/'+contest.logo + ')'}"></div>
+			<md-card-title class="contest-card__title">
+	           	<span>{{contest.name}}</span>
+	       	</md-card-title>
+	       	<md-card-content class="contest-card__content">
+	       		<p class="contest-card__date">
+	       			{{contest.date | date:"dd.MM.yyyy"}}
+	       		</p>
+	       		<p class="contest-card__description" *ngIf="contest.description">
+	       			{{contest.description}}
+	       		</p>
+	       	</md-card-content>
+	    </a>
+	</md-card>
+</div>
