@@ -1,3 +1,25 @@
-<p>
-  form-contest works!
-</p>
+<div class="form-contest">
+	<div class="form-contest__wrapper">
+		<div class="form-contest__field-wrapper">
+			<md-input placeholder="Название конкурса" maxlength="500" class="md-input">
+			</md-input>
+		</div>
+		<div class="form-contest__field-wrapper">
+			<md-checkbox [checked]="false" align="end">
+			  Действующий
+			</md-checkbox>
+		</div>
+		<div class="form-contest__field-wrapper">
+			<label>
+				Дата публикации
+				<span><input type="date" value="2016-12-22"/></span>
+			</label>
+		</div>
+		<div class="form-contest__field-wrapper" maxlength="2054" >
+			<md-textarea placeholder="Описание" class="md-textarea"></md-textarea>
+		</div>
+		<div class="form-contest__field-wrapper">
+			<button md-raised-button color="primary">Сохранить</button>
+		</div>
+	</div>
+</div>

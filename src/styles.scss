@@ -35,10 +35,10 @@ app-root {
 	color: md-color($accent)  !important;
 }
 
-.md-input-underline {
+.contest-search .md-input-underline {
 	border-color: $light;
 }
 
-.md-input-underline .md-input-ripple  {
+.contest-search .md-input-underline .md-input-ripple  {
 	display: none;
 }
