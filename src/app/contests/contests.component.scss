@@ -37,14 +37,18 @@
 }
 
 .contest-card {
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
 	width: 250px;
-	height: 300px;
+	height: 305px;
 	margin: 30px 30px 30px 0;
 	padding: 0;
 
 	&__href {
 		text-decoration: none;
 		color: inherit;
+		margin-bottom: auto;
 	}
 	
 	&__picture {
@@ -52,12 +56,17 @@
 		background: $light-text no-repeat 50% 50%;
 		background-size: cover;
 		margin-bottom: 10px;
+		color: white;
 	}
 
 	&__title {
 		font-size: 1.2em;
 		font-weight: bold;
 		margin: 0 15px 5px 15px;
+	}
+
+	&__content {
+		margin-bottom: 10px;
 	}
 
 	&__date {
@@ -68,6 +77,29 @@
 	&__description {
 		font-size: 1em;
 		margin: 0 15px 0 15px;
+	}
+
+	&-actions {
+	  display: flex;
+	  justify-content: flex-end;
+	  padding: 0;
+	  margin: 0 15px 0 0;
+	}
+
+	&-action {
+		display: block;
+		margin-left: 7px;
+		margin-bottom: 10px;
+		color: $light-text;
+		text-decoration: none;
+
+		svg {
+		  fill: currentColor;
+		}
+
+		&:hover {
+			color: md-color($primary);
+		}
 	}
 }
 
@@ -84,5 +116,18 @@
 	.contest-search {
 		top: 100px;
 		left: 20px;
+	}
+}
+
+.item-card-icon-plus {
+	display: block;
+	height: 100%;
+	position: relative;
+	svg {
+		fill: currentColor;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		transform: translate(-50%, -50%);
 	}
 }

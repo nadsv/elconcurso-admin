@@ -1,3 +1,6 @@
+@import '../../assets/styles/_vars.scss';
+
+
 .md-toolbar {
 	display: flex;
 	flex-direction: row;
@@ -9,6 +12,11 @@
 .app-title {
 	font-weight: normal;
 	padding: 5px;
+
+	&__admin {
+		font-size: 0.4em;
+		color: md-color($accent);
+	}
 }
 
 .app-logo-ref {

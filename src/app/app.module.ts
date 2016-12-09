@@ -14,6 +14,7 @@ import { ContestsApiService } from './contests-api.service';
 import { routing } from './app.routes';
 
 import { ContestsNameFilter } from './contests.pipe';
+import { FormContestComponent } from './form-contest/form-contest.component';
 
 
 
@@ -24,7 +25,8 @@ import { ContestsNameFilter } from './contests.pipe';
     HeaderComponent,
     FooterComponent,
     ContestsComponent,
-    ContestsNameFilter
+    ContestsNameFilter,
+    FormContestComponent
   ],
   imports: [
     BrowserModule,
