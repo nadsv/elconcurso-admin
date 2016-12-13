@@ -42,3 +42,7 @@ app-root {
 .contest-search .md-input-underline .md-input-ripple  {
 	display: none;
 }
+
+.md-input-placeholder {
+	color: $light-text !important;
+}

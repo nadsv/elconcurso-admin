@@ -8,6 +8,30 @@
 	&__field-wrapper:not(:last-child) {
 		margin-bottom: 15px;
 	}
+
+	&__label {
+		color: $light-text;
+	}
+
+	&__checkbox {
+		color: $light-text;
+	}
+
+	&__date {
+		font-size: 16px;
+		outline: none;
+		border: none;
+		box-shadow: 0 1px 0 0 $light-text;
+		transition: 400ms cubic-bezier(0.25, 0.8, 0.25, 1);
+	}
+
+	&__date-wrapper {
+		margin-left: 5px;
+	}
+
+	&__date:focus {
+		box-shadow: 0 2px 0 0 md-color($primary);
+	}
 }
 
 .md-input {
@@ -16,8 +40,4 @@
 
 .md-textarea {
 	width: 100%;
-}
-
-.md-input-placeholder {
-	color: $light-text;
 }
