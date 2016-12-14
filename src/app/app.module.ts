@@ -15,6 +15,7 @@ import { routing } from './app.routes';
 
 import { ContestsNameFilter } from './contests.pipe';
 import { FormContestComponent } from './form-contest/form-contest.component';
+import { LoadImageComponent } from './load-image/load-image.component';
 
 
 
@@ -26,7 +27,8 @@ import { FormContestComponent } from './form-contest/form-contest.component';
     FooterComponent,
     ContestsComponent,
     ContestsNameFilter,
-    FormContestComponent
+    FormContestComponent,
+    LoadImageComponent
   ],
   imports: [
     BrowserModule,
