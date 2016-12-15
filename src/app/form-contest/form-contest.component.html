@@ -1,26 +1,26 @@
-<form class="form-contest">
+<form class="form-contest" (ngSubmit)="onSubmit(contest)" [formGroup]="contest">
 	<div class="form-contest__wrapper">
 		<div class="form-contest__field-wrapper">
-			<md-input placeholder="Название конкурса" maxlength="500" class="md-input">
+			<md-input placeholder="Название конкурса" maxlength="500" class="md-input" name="name">
 			</md-input>
 		</div>
 		<div class="form-contest__field-wrapper">
-			<md-checkbox [checked]="false" align="end" class="form-contest__checkbox">
-			  Действующий
+			<md-checkbox [checked]="false" align="end" class="form-contest__checkbox" name="active">
+				Действующий
 			</md-checkbox>
 		</div>
 		<div class="form-contest__field-wrapper">
-			<label class="form-contest__label">
+			<label class="form-contest__label" name="date">
 				Дата публикации
 				<span class="form-contest__date-wrapper"><input type="date" value="2016-12-22" class="form-contest__date"/></span>
 			</label>
 		</div>
 		<div class="form-contest__field-wrapper" maxlength="2054" >
-			<md-textarea placeholder="Описание" class="md-textarea"></md-textarea>
+			<md-textarea placeholder="Описание" class="md-textarea" name="description"></md-textarea>
 		</div>
 		<app-load-image></app-load-image>
 		<div class="form-contest__field-wrapper">
-			<button md-raised-button color="primary">Сохранить</button>
+			<button md-raised-button color="primary" [disabled]="contest.invalid">Сохранить</button>
 		</div>
 	</div>
 </form>
