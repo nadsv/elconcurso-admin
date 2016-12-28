@@ -13,10 +13,13 @@ export class FormContestComponent implements OnInit {
 	constructor() { }
 
 	ngOnInit() {
+		const currentDate = new Date();
+		const formatDate = currentDate.toISOString().substring(0, 10);
+
 		this.contest = new FormGroup({
       		name: new FormControl('', [Validators.required, Validators.minLength(3)]),
       		active: new FormControl(''),
-      		date: new FormControl('', Validators.required),
+      		date: new FormControl(formatDate, Validators.required),
       		description: new FormControl(''),
       		logo: new FormControl('')
       	})

@@ -1,22 +1,24 @@
-<form class="form-contest" (ngSubmit)="onSubmit(contest)" [formGroup]="contest">
+<form novalidate class="form-contest" (ngSubmit)="onSubmit(contest)" [formGroup]="contest">
 	<div class="form-contest__wrapper">
 		<div class="form-contest__field-wrapper">
-			<md-input placeholder="Название конкурса" maxlength="500" class="md-input" name="name">
+			<md-input placeholder="Название конкурса" maxlength="500" class="md-input" formControlName="name">
 			</md-input>
 		</div>
 		<div class="form-contest__field-wrapper">
-			<md-checkbox [checked]="false" align="end" class="form-contest__checkbox" name="active">
+			<md-checkbox [checked]="false" align="end" class="form-contest__checkbox" formControlName="active">
 				Действующий
 			</md-checkbox>
 		</div>
 		<div class="form-contest__field-wrapper">
-			<label class="form-contest__label" name="date">
+			<label class="form-contest__label">
 				Дата публикации
-				<span class="form-contest__date-wrapper"><input type="date" value="2016-12-22" class="form-contest__date"/></span>
+				<span class="form-contest__date-wrapper">
+					<input type="date" value="2016-12-22" class="form-contest__date" formControlName="date"/>
+				</span>
 			</label>
 		</div>
 		<div class="form-contest__field-wrapper" maxlength="2054" >
-			<md-textarea placeholder="Описание" class="md-textarea" name="description"></md-textarea>
+			<md-textarea placeholder="Описание" class="md-textarea" formControlName="description"></md-textarea>
 		</div>
 		<app-load-image></app-load-image>
 		<div class="form-contest__field-wrapper">

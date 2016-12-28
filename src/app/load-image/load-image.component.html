@@ -1,5 +1,5 @@
-<div class="load-image__wrapper" >
+<div class="load-image__wrapper" [ngStyle]="{'background-image': base64Image}">
 	<div class="load-image__logo"></div>
-    <div class="load-image__load-phrase">Загрузить логотип</div>
-    <input type="file" class="load-image__btn" name="photo">
+    <div class="load-image__load-phrase">{{phrase}}</div>
+    <input type="file" class="load-image__btn" (change)="onChange($event)">
 </div>
