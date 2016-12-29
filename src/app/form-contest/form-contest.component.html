@@ -20,7 +20,7 @@
 		<div class="form-contest__field-wrapper" maxlength="2054" >
 			<md-textarea placeholder="Описание" class="md-textarea" formControlName="description"></md-textarea>
 		</div>
-		<app-load-image></app-load-image>
+		<app-load-image (onLogoChanged)="onLogoChanged($event)"></app-load-image>
 		<div class="form-contest__field-wrapper">
 			<button md-raised-button color="primary" [disabled]="contest.invalid">Сохранить</button>
 		</div>

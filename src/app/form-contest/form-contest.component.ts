@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild  } from '@angular/core';
 import { FormControl, FormGroup, Validators  } from '@angular/forms';
 import { Contest } from '../contest';
+import { ContestsApiService } from '../contests-api.service';
 
 @Component({
 	selector: 'app-form-contest',
@@ -9,8 +10,11 @@ import { Contest } from '../contest';
 })
 export class FormContestComponent implements OnInit {
 	contest: FormGroup;
+	url: string;
 
-	constructor() { }
+	constructor(private contestsApi: ContestsApiService) { 
+		this.url = this.contestsApi.apiUrl + 'addContest.php';
+	}
 
 	ngOnInit() {
 		const currentDate = new Date();
@@ -21,12 +25,19 @@ export class FormContestComponent implements OnInit {
       		active: new FormControl(''),
       		date: new FormControl(formatDate, Validators.required),
       		description: new FormControl(''),
-      		logo: new FormControl('')
+      		logo: new FormControl('', Validators.required)
       	})
 	}
 
+	onLogoChanged(fileName : string) {
+		this.contest.controls['logo'].setValue(fileName);
+	}
+
 	onSubmit() {
-		console.log(this.contest.value, this.contest.valid);
+		this.contestsApi.saveData(this.url, this.contest.value)
+			.subscribe(
+        		() => {},
+        		error => console.log('Error saving voice'));
 	}
 
 }

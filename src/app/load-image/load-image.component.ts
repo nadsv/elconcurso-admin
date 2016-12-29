@@ -1,4 +1,4 @@
-import { Component, OnInit, OnChanges } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
 @Component({
 	selector: 'app-load-image',
@@ -7,8 +7,10 @@ import { Component, OnInit, OnChanges } from '@angular/core';
 })
 export class LoadImageComponent implements OnInit {
 	public base64Image: string;
+	public fileName: string;
 	public phrase: string; 
 	public loadPhrase: string;
+	@Output() onLogoChanged = new EventEmitter<string>();
 
 	constructor() { 
 		this.loadPhrase = 'Загрузить логотип';
@@ -28,11 +30,15 @@ export class LoadImageComponent implements OnInit {
 
         if (file.type.match(/image.*/)) {
 			reader.readAsDataURL(file);
+			this.fileName = file.name;
 			this.phrase = 'Загрузить новый логотип';
 		} else {
 			this.base64Image = '';
+			this.fileName = '';
 			this.phrase = `Неверный тип файла! ${this.loadPhrase}`;
 		}
+
+		this.onLogoChanged.emit(this.fileName);
 	}
 
 }
