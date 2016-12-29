@@ -1,5 +1,12 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 
+class LogoImage {
+	fileName: string;
+	base64Image: string;
+
+	constructor() {}
+}
+
 @Component({
 	selector: 'app-load-image',
 	templateUrl: './load-image.component.html',
@@ -7,10 +14,10 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 })
 export class LoadImageComponent implements OnInit {
 	public base64Image: string;
-	public fileName: string;
+	public file;
 	public phrase: string; 
 	public loadPhrase: string;
-	@Output() onLogoChanged = new EventEmitter<string>();
+	@Output() onLogoChanged = new EventEmitter<any>();
 
 	constructor() { 
 		this.loadPhrase = 'Загрузить логотип';
@@ -21,24 +28,26 @@ export class LoadImageComponent implements OnInit {
 	}
 
 	onChange(event) {
-		const file = event.srcElement.files[0];
+		this.file = event.srcElement.files[0];
+		let logoImage = new LogoImage();
 
 		let reader = new FileReader();
-        reader.onload = () => {
-            this.base64Image = 'url(' + reader.result +')';
-        };
 
-        if (file.type.match(/image.*/)) {
-			reader.readAsDataURL(file);
-			this.fileName = file.name;
+        if (this.file.type.match(/image.*/)) {
+			reader.readAsDataURL(this.file);
 			this.phrase = 'Загрузить новый логотип';
+			reader.onload = () => {
+	            this.base64Image = 'url(' + reader.result +')';
+	            logoImage.base64Image = reader.result;
+	            logoImage.fileName = this.file.name;
+	            this.onLogoChanged.emit(logoImage);
+        	};
 		} else {
 			this.base64Image = '';
-			this.fileName = '';
 			this.phrase = `Неверный тип файла! ${this.loadPhrase}`;
+			this.onLogoChanged.emit('');
 		}
 
-		this.onLogoChanged.emit(this.fileName);
 	}
 
 }

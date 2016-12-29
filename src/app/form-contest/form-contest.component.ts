@@ -29,8 +29,10 @@ export class FormContestComponent implements OnInit {
       	})
 	}
 
-	onLogoChanged(fileName : string) {
-		this.contest.controls['logo'].setValue(fileName);
+	onLogoChanged(logoImage: any) {
+		this.contest.controls['logo'].setValue(logoImage.fileName);
+		this.contest.addControl('base64Image', new FormControl(logoImage.base64Image))
+		console.log(this.contest);
 	}
 
 	onSubmit() {
